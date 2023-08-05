@@ -1,1 +1,5 @@
 allow-explosion-grief: false # Whether blocks can be exploded
+
+spawner:
+  creepah:
+    spawn-health: 10

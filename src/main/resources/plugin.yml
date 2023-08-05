@@ -3,5 +3,6 @@ version: '${project.version}'
 main: net.highskiesmc.hscore.HSCore
 api-version: '1.13'
 authors: [ Daniel Ohrin ]
+softdepend: [ RoseStacker ]
 commands:
   hscore:
