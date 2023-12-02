@@ -1,7 +1,6 @@
-package net.highskiesmc.hscore.events.handlers;
+package net.highskiesmc.hsmisc.events.handlers;
 
-import com.mattisadev.mcore.configuration.ConfigManager;
-import net.highskiesmc.hscore.HSCore;
+import net.highskiesmc.hsmisc.HSMisc;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -14,9 +13,9 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class TogglePvpHandler implements Listener {
-    private final HSCore MAIN;
+    private final HSMisc MAIN;
 
-    public TogglePvpHandler(HSCore main) {
+    public TogglePvpHandler(HSMisc main) {
         this.MAIN = main;
     }
 

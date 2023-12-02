@@ -1,6 +1,6 @@
-package net.highskiesmc.hscore.commands.tabcompleters;
+package net.highskiesmc.hsmisc.commands.tabcompleters;
 
-import com.mattisadev.mcore.highskies.HSTabCompleter;
+import net.highskiesmc.hscore.highskies.HSTabCompleter;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -8,10 +8,10 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HSCoreTabCompleter extends HSTabCompleter {
+public class HSMiscTabCompleter extends HSTabCompleter {
     @Override
     public boolean hasPermission(CommandSender sender) {
-        return sender.hasPermission("hscore.cmd.tab");
+        return sender.hasPermission("hsmisc.cmd.tab");
     }
 
     @Override

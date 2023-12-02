@@ -1,6 +1,6 @@
-package net.highskiesmc.hscore.events.handlers;
+package net.highskiesmc.hsmisc.events.handlers;
 
-import net.highskiesmc.hscore.HSCore;
+import net.highskiesmc.hsmisc.HSMisc;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -8,9 +8,9 @@ import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class ExplosionHandler implements Listener {
-    private final HSCore MAIN;
+    private final HSMisc MAIN;
 
-    public ExplosionHandler(HSCore main) {
+    public ExplosionHandler(HSMisc main) {
         this.MAIN = main;
         System.out.println("Registered event");
     }

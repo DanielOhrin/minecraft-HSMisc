@@ -1,13 +1,11 @@
-package net.highskiesmc.hscore.events.handlers;
+package net.highskiesmc.hsmisc.events.handlers;
 
 import dev.rosewood.rosestacker.RoseStacker;
 import dev.rosewood.rosestacker.event.AsyncEntityDeathEvent;
 import dev.rosewood.rosestacker.event.EntityStackEvent;
-import dev.rosewood.rosestacker.event.EntityStackMultipleDeathEvent;
-import dev.rosewood.rosestacker.event.EntityUnstackEvent;
 import dev.rosewood.rosestacker.manager.StackManager;
 import dev.rosewood.rosestacker.stack.StackedEntity;
-import net.highskiesmc.hscore.HSCore;
+import net.highskiesmc.hsmisc.HSMisc;
 import org.bukkit.entity.Creeper;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +14,7 @@ import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class CreeperHealthHandler implements Listener {
-    private final HSCore MAIN;
+    private final HSMisc MAIN;
     private final StackManager stackManager;
     private int maxHealth;
 
@@ -24,7 +22,7 @@ public class CreeperHealthHandler implements Listener {
         this.maxHealth = hp;
     }
 
-    public CreeperHealthHandler(HSCore main) {
+    public CreeperHealthHandler(HSMisc main) {
         this.MAIN = main;
         this.stackManager = RoseStacker.getInstance().getManager(StackManager.class);
         this.maxHealth = main.getConfig().getInt("spawner.creepah.spawn-health", 10);

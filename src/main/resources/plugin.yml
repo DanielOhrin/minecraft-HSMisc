@@ -1,8 +1,9 @@
-name: HSCore
+name: HSMisc
 version: '${project.version}'
-main: net.highskiesmc.hscore.HSCore
+main: net.highskiesmc.hsmisc.HSMisc
 api-version: '1.13'
 authors: [ Daniel Ohrin ]
 softdepend: [ RoseStacker ]
 commands:
-  hscore:
+  hsmisc:
+  encode:
