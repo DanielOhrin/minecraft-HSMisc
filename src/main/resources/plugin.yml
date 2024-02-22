@@ -2,7 +2,7 @@ name: HSMisc
 version: '${project.version}'
 main: net.highskiesmc.hsmisc.HSMisc
 api-version: '1.13'
-authors: [ Daniel Ohrin ]
+authors: [ Daniel Ohrin, Matthew Wiggins]
 softdepend: [ RoseStacker ]
 commands:
   hsmisc:

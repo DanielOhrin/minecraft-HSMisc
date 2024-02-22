@@ -18,8 +18,17 @@ import java.util.Set;
 public final class HSMisc extends HSPlugin {
     public static final boolean USING_ROSESTACKER = Bukkit.getPluginManager().getPlugin("RoseStacker") != null;
     private CreeperHealthHandler creeperHealthHandler;
+    private ConfigManager configManager;
     @Override
     public void enable() {
+
+        this.configManager = new ConfigManager(this);
+
+        configManager.load("config.yml");
+        configManager.save("config.yml");
+        configManager.load("togglepvp.yml");
+        configManager.save("togglepvp.yml");
+
         getCommand("hsmisc").setExecutor(new HSMiscCommand(this));
         getCommand("hsmisc").setTabCompleter(new HSMiscTabCompleter());
 
@@ -42,7 +51,7 @@ public final class HSMisc extends HSPlugin {
     @Override
     public void reload() {
         if (USING_ROSESTACKER)
-            this.creeperHealthHandler.setMaxHealth(getConfig().getInt("spawner.creepah.spawn-health", 10));
+            this.creeperHealthHandler.setMaxHealth(getConfiguration().getInt("creeper-spawner-health", 10));
     }
 
     @Override
@@ -50,15 +59,15 @@ public final class HSMisc extends HSPlugin {
         return false;
     }
 
-    @Nonnull
-    @Override
-    protected Set<String> getConfigFileNames() {
-        return new HashSet<>() {{
-            add("togglepvp.yml");
-        }};
-    }
-
     public FileConfiguration getTogglePvp() {
         return ConfigManager.get("togglepvp.yml");
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
+    }
+
+    public FileConfiguration getConfiguration() {
+        return ConfigManager.get("config.yml");
     }
 }

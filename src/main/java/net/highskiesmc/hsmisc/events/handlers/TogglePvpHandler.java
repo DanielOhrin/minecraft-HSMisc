@@ -1,5 +1,6 @@
 package net.highskiesmc.hsmisc.events.handlers;
 
+import net.highskiesmc.hscore.utils.TextUtils;
 import net.highskiesmc.hsmisc.HSMisc;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,17 +25,8 @@ public class TogglePvpHandler implements Listener {
         final String[] ARGS = e.getMessage().split(" ");
 
         if (ARGS[0].equalsIgnoreCase("/pvp") || ARGS[0].equalsIgnoreCase("/togglepvp")) {
-            final FileConfiguration CONFIG = this.MAIN.getTogglePvp();
-
-            boolean isEnabled = hasPvPEnabled(e.getPlayer());
-
-            CONFIG.set(e.getPlayer().getUniqueId().toString(), !isEnabled);
-
-            e.getPlayer().sendMessage(
-                    isEnabled
-                            ? ChatColor.RED + "PvP in adventures disabled"
-                            : ChatColor.GREEN + "PvP in adventures enabled"
-            );
+            MAIN.getTogglePvp().set(e.getPlayer().getUniqueId().toString(), !hasPvPEnabled(e.getPlayer()));
+            e.getPlayer().sendMessage(hasPvPEnabled(e.getPlayer()) ? TextUtils.translateColor("&4&l[!] &cYou have disabled your PvP in adventure worlds!") : TextUtils.translateColor("&6&l[!] &eYou have enabled your PvP in adventure worlds!"));
 
             MAIN.getConfigManager().save("togglepvp.yml");
 
@@ -58,9 +50,7 @@ public class TogglePvpHandler implements Listener {
     }
 
     private boolean hasPvPEnabled(@NonNull Player player) {
-        final FileConfiguration CONFIG = this.MAIN.getTogglePvp();
-
-        return !CONFIG.isSet(player.getUniqueId().toString()) || CONFIG.getBoolean(player.getUniqueId().toString(),
+        return !MAIN.getTogglePvp().isSet(player.getUniqueId().toString()) || MAIN.getTogglePvp().getBoolean(player.getUniqueId().toString(),
                 true);
     }
 }

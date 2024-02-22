@@ -25,7 +25,7 @@ public class CreeperHealthHandler implements Listener {
     public CreeperHealthHandler(HSMisc main) {
         this.MAIN = main;
         this.stackManager = RoseStacker.getInstance().getManager(StackManager.class);
-        this.maxHealth = main.getConfig().getInt("spawner.creepah.spawn-health", 10);
+        this.maxHealth = main.getConfiguration().getInt("creeper-spawner-health", 10);
     }
 
     @EventHandler

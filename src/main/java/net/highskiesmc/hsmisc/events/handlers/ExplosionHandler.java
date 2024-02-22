@@ -12,27 +12,18 @@ public class ExplosionHandler implements Listener {
 
     public ExplosionHandler(HSMisc main) {
         this.MAIN = main;
-        System.out.println("Registered event");
     }
 
     @EventHandler
     public void onBlockExplode(BlockExplodeEvent e) {
-        if (!MAIN.getConfig().isSet("allow-explosion-grief")) {
-            Bukkit.getLogger().warning("Missing config setting \"allow-explosion-grief\": bool");
-        }
-
-        if (!MAIN.getConfig().getBoolean("allow-explosion-grief")) {
+        if (!MAIN.getConfiguration().getBoolean("allow-explosion-grief", false)) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
-        if (!MAIN.getConfig().isSet("allow-explosion-grief")) {
-            Bukkit.getLogger().warning("Missing config setting \"allow-explosion-grief\": bool");
-        }
-
-        if (!MAIN.getConfig().getBoolean("allow-explosion-grief")) {
+        if (!MAIN.getConfiguration().getBoolean("allow-explosion-grief", false)) {
             e.setCancelled(true);
         }
     }

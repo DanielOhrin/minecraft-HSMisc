@@ -1,8 +1,0 @@
-player-only: '&4&l[!] &cOnly players can do that!'
-no-permission: '&4&l[!] &cYou do not have permission to do that!'
-no-player: '&4&l[!] &cPlayer not found: &f{player}&c.'
-
-commands:
-  error: '&4&l[!] &cUnknown command; Usage: {usage}'
-  reload:
-    success: '&6&l[!] &eYou have successfully reloaded HSCore!'
