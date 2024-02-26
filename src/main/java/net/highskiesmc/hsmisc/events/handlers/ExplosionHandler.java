@@ -16,14 +16,14 @@ public class ExplosionHandler implements Listener {
 
     @EventHandler
     public void onBlockExplode(BlockExplodeEvent e) {
-        if (!MAIN.getConfiguration().getBoolean("allow-explosion-grief", false)) {
+        if (!MAIN.getConfig().getBoolean("allow-explosion-grief", false)) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
-        if (!MAIN.getConfiguration().getBoolean("allow-explosion-grief", false)) {
+        if (!MAIN.getConfig().getBoolean("allow-explosion-grief", false)) {
             e.setCancelled(true);
         }
     }

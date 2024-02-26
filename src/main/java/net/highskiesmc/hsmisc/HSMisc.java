@@ -51,7 +51,7 @@ public final class HSMisc extends HSPlugin {
     @Override
     public void reload() {
         if (USING_ROSESTACKER)
-            this.creeperHealthHandler.setMaxHealth(getConfiguration().getInt("creeper-spawner-health", 10));
+            this.creeperHealthHandler.setMaxHealth(getConfig().getInt("creeper-spawner-health", 10));
     }
 
     @Override
@@ -67,7 +67,7 @@ public final class HSMisc extends HSPlugin {
         return configManager;
     }
 
-    public FileConfiguration getConfiguration() {
+    public FileConfiguration getConfig() {
         return ConfigManager.get("config.yml");
     }
 }
