@@ -5,6 +5,7 @@ import dev.rosewood.rosestacker.event.AsyncEntityDeathEvent;
 import dev.rosewood.rosestacker.event.EntityStackEvent;
 import dev.rosewood.rosestacker.manager.StackManager;
 import dev.rosewood.rosestacker.stack.StackedEntity;
+import net.highskiesmc.hscore.highskies.HSListener;
 import net.highskiesmc.hsmisc.HSMisc;
 import org.bukkit.entity.Creeper;
 import org.bukkit.event.EventHandler;
@@ -13,8 +14,7 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.SpawnerSpawnEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class CreeperHealthHandler implements Listener {
-    private final HSMisc MAIN;
+public class CreeperHealthHandler extends HSListener {
     private final StackManager stackManager;
     private int maxHealth;
 
@@ -23,45 +23,51 @@ public class CreeperHealthHandler implements Listener {
     }
 
     public CreeperHealthHandler(HSMisc main) {
-        this.MAIN = main;
+        super(main);
         this.stackManager = RoseStacker.getInstance().getManager(StackManager.class);
-        this.maxHealth = main.getConfig().getInt("spawner.creepah.spawn-health", 10);
+        this.maxHealth = config.get("spawner.creepah.spawn-health", int.class, 10);
     }
 
     @EventHandler
     public void onSpawnerSpawn(SpawnerSpawnEvent e) {
-        if (e.getEntity() instanceof Creeper creepah)
+        if (e.getEntity() instanceof Creeper creepah) {
             creepah.setHealth(maxHealth);
+        }
     }
 
     @EventHandler
     public void onMobsDoThings(EntityStackEvent e) {
-        if (e.getStack().getEntity() instanceof Creeper creepah)
+        if (e.getStack().getEntity() instanceof Creeper creepah) {
             creepah.setHealth(maxHealth);
+        }
     }
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent e) {
-        if (!(e instanceof AsyncEntityDeathEvent) && e.getEntity() instanceof Creeper creepah)
+        if (!(e instanceof AsyncEntityDeathEvent) && e.getEntity() instanceof Creeper creepah) {
             handleCreeperStackHealth(e, creepah);
+        }
     }
 
     private void handleCreeperStackHealth(EntityDeathEvent e, Creeper creepah) {
-        if (this.stackManager.isWorldDisabled(creepah.getWorld()))
+        if (this.stackManager.isWorldDisabled(creepah.getWorld())) {
             return;
+        }
 
-        if (!this.stackManager.isEntityStackingEnabled())
+        if (!this.stackManager.isEntityStackingEnabled()) {
             return;
+        }
 
         StackedEntity stackedEntity = this.stackManager.getStackedEntity(creepah);
-        if (stackedEntity == null)
+        if (stackedEntity == null) {
             return;
+        }
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 stackedEntity.getEntity().setHealth(maxHealth);
             }
-        }.runTaskLater(this.MAIN, 1);
+        }.runTaskLater(this.main, 1);
     }
 }

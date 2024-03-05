@@ -17,11 +17,6 @@ public class HSMiscCommand extends HSCommand {
     }
 
     @Override
-    protected Map<CommandConfig.Type, List<CommandConfig<?>>> createConfig() {
-        return null;
-    }
-
-    @Override
     protected String getPermissionToReload() {
         return "hsmisc.cmd.reload";
     }
@@ -39,11 +34,11 @@ public class HSMiscCommand extends HSCommand {
         if (hasPermission(
                 sender,
                 "hsmisc.cmd.tab",
-                TextUtils.translateColor(this.main.getMessages().getString("no-permission",
+                TextUtils.translateColor(config.get("no-permission", String.class,
                         "&4&l[!] &cYou do not have permission to do that!")))
         ) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    this.main.getMessages().getString("commands.error", "&4&l[!] &cUnknown command; " +
+                    config.get("commands.error", String.class, "&4&l[!] &cUnknown command; " +
                             "Usage: {usage}").replace("{usage}", "/hscore <reload>")));
         }
 
