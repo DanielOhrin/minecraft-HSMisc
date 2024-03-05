@@ -6,6 +6,7 @@ import net.highskiesmc.hsmisc.commands.commands.EncodeCommand;
 import net.highskiesmc.hsmisc.commands.commands.HSMiscCommand;
 import net.highskiesmc.hsmisc.commands.tabcompleters.HSMiscTabCompleter;
 import net.highskiesmc.hsmisc.events.handlers.CreeperHealthHandler;
+import net.highskiesmc.hsmisc.events.handlers.EntityDamageHandler;
 import net.highskiesmc.hsmisc.events.handlers.ExplosionHandler;
 import org.bukkit.Bukkit;
 
@@ -23,6 +24,7 @@ public final class HSMisc extends HSPlugin {
 
         getCommand("encode").setExecutor(new EncodeCommand());
 
+        register(new EntityDamageHandler(this));
         register(new ExplosionHandler(this));
         //register(new TogglePvpHandler(this));
 

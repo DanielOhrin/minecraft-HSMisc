@@ -1,6 +1,6 @@
 package net.highskiesmc.hsmisc.commands.commands;
 
-import net.highskiesmc.hscore.commands.CommandConfig;
+
 import net.highskiesmc.hscore.commands.HSCommand;
 import net.highskiesmc.hscore.highskies.HSPlugin;
 import net.highskiesmc.hscore.utils.TextUtils;
