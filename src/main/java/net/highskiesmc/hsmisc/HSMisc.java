@@ -49,16 +49,4 @@ public final class HSMisc extends HSPlugin {
     protected boolean isUsingInventories() {
         return false;
     }
-
-    @Nonnull
-    @Override
-    protected Set<String> getConfigFileNames() {
-        return new HashSet<>() {{
-            add("togglepvp.yml");
-        }};
-    }
-
-    public FileConfiguration getTogglePvp() {
-        return ConfigManager.get("togglepvp.yml");
-    }
 }
