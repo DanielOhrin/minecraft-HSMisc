@@ -26,7 +26,7 @@ public final class HSMisc extends HSPlugin {
         getCommand("encode").setExecutor(new EncodeCommand());
 
         register(new ExplosionHandler(this));
-        register(new TogglePvpHandler(this));
+        //register(new TogglePvpHandler(this));
 
         if (USING_ROSESTACKER) {
             this.creeperHealthHandler = new CreeperHealthHandler(this);
