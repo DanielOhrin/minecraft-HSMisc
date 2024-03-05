@@ -17,6 +17,7 @@ public final class HSMisc extends HSPlugin {
     public void enable() {
         config.addSource(new FileConfigSource("config.yml", this));
         config.addSource(new FileConfigSource("messages.yml", this));
+        config.addSource(new FileConfigSource("damage-modifiers.yml", this));
         config.reload();
 
         getCommand("hsmisc").setExecutor(new HSMiscCommand(this));

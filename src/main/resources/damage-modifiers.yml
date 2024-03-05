@@ -1,0 +1,21 @@
+# The modifiers should be positive or negative
+# 0.25 = +25%
+# -0.25 = -25% etc.
+# Each modifier is applied individually for each piece of armor
+# So, chain/iron/diamond will do +/- % damage for each piece of ____ armor the victim is wearing
+damage-modifiers:
+  worlds:
+    - Example
+    - Example2
+  chain: # Weapon
+    chain: 0 # Armor
+    iron: -0.1 # Armor
+    diamond: -0.2 # Armor
+  iron: # Weapon
+    chain: 0.1 # Armor
+    iron: 0 # Armor
+    diamond: -0.1 # Armor
+  diamond: # Weapon
+    chain: 0.2 # Armor
+    iron: 0.1 # Armor
+    diamond: 0 # Armor
