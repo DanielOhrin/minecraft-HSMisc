@@ -25,7 +25,7 @@ public final class DamageModifiers {
     }
 
     public static double getGearModifier(Config config, Entity attacker, Entity victim) {
-        double modifier = 1;
+        double modifier = 0;
 
         if (attacker instanceof LivingEntity a) {
             if (victim instanceof LivingEntity v) {
@@ -52,7 +52,7 @@ public final class DamageModifiers {
     private static GearType getGearType(ItemStack item) {
         String type = item.getType().toString().toLowerCase();
 
-        if (type.matches("^(stone)|(chainmail)")) {
+        if (type.matches("^((stone)|(chainmail)).+$")) {
             return GearType.CHAIN;
         }
 
@@ -73,13 +73,12 @@ public final class DamageModifiers {
         }
 
         String type = item.getType().toString().toLowerCase();
-
-        return type.matches("^.+(helmet)|(chestplate)|(leggings)|(boots)|(sword)|((?<!pick)axe)$");
+        return type.matches("^.+((helmet)|(chestplate)|(leggings)|(boots)|(sword)|((?<!pick)axe))$");
     }
 
     private static double getModifier(Config config, GearType weapon, GearType armor) {
         return config.get("damage-modifiers." + weapon.name().toLowerCase() + "." + armor.name().toLowerCase(),
-                double.class, 0D);
+                Double.class, 0D);
     }
 
     public static boolean isUsedInWorld(Config config, @NonNull World world) {
