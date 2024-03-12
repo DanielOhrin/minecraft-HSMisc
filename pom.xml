@@ -6,16 +6,16 @@
 
     <groupId>net.highskiesmc</groupId>
     <artifactId>hsmisc</artifactId>
-    <version>1.0.3</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>HSMisc</name>
 
     <properties>
         <author>Daniel Ohrin</author>
-        <author>Matthew Wiggins</author>
         <main.class>${project.groupId}.${project.artifactId}.${project.name}</main.class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <core.version>1.2.4</core.version>
     </properties>
 
     <build>
@@ -116,18 +116,18 @@
         <dependency>
             <groupId>net.highskiesmc</groupId>
             <artifactId>hscore</artifactId>
-            <version>1.2.3</version>
+            <version>${core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <version>1.20.1-R0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>dev.rosewood</groupId>
             <artifactId>rosestacker</artifactId>
-            <version>1.5.17</version>
+            <version>1.5.10</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
