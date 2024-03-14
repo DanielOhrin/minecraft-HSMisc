@@ -58,11 +58,11 @@ public class EntityDamageHandler extends HSListener {
             return;
         }
 
-        double dmg = e.getDamage();
-        double newDmg = e.getDamage() * event.getModifier();
-        System.out.println("Original Damage: " + dmg);
-        System.out.println("Modifier: " + event.getModifier());
-        System.out.println("New Damage: " + newDmg);
+        //double dmg = e.getDamage();
+        //double newDmg = e.getDamage() * event.getModifier();
+       // System.out.println("Original Damage: " + dmg);
+       // System.out.println("Modifier: " + event.getModifier());
+        //System.out.println("New Damage: " + newDmg);
         e.setDamage(e.getDamage() * event.getModifier());
     }
 }

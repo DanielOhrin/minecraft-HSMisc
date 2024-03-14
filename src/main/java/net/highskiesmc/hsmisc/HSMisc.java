@@ -5,6 +5,7 @@ import net.highskiesmc.hscore.highskies.HSPlugin;
 import net.highskiesmc.hsmisc.commands.commands.EncodeCommand;
 import net.highskiesmc.hsmisc.commands.commands.HSMiscCommand;
 import net.highskiesmc.hsmisc.commands.tabcompleters.HSMiscTabCompleter;
+import net.highskiesmc.hsmisc.events.handlers.BossClearDropsHandler;
 import net.highskiesmc.hsmisc.events.handlers.CreeperHealthHandler;
 import net.highskiesmc.hsmisc.events.handlers.EntityDamageHandler;
 import net.highskiesmc.hsmisc.events.handlers.ExplosionHandler;
@@ -12,8 +13,9 @@ import org.bukkit.Bukkit;
 
 public final class HSMisc extends HSPlugin {
     public static final boolean usingRoseStacker = Bukkit.getPluginManager().getPlugin("RoseStacker") != null;
+    public static final boolean usingEliteBosses = Bukkit.getPluginManager().getPlugin("EliteBosses") != null;
     private CreeperHealthHandler creeperHealthHandler;
-    @Override
+
     public void enable() {
         config.addSource(new FileConfigSource("config.yml", this));
         config.addSource(new FileConfigSource("messages.yml", this));
@@ -32,6 +34,10 @@ public final class HSMisc extends HSPlugin {
         if (usingRoseStacker) {
             this.creeperHealthHandler = new CreeperHealthHandler(this);
             register(this.creeperHealthHandler);
+        }
+
+        if (usingEliteBosses) {
+            Bukkit.getPluginManager().registerEvents(new BossClearDropsHandler(), this);
         }
     }
 
