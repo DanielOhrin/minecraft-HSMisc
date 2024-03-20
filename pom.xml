@@ -132,7 +132,7 @@
         <dependency>
             <groupId>net.splodgebox</groupId>
             <artifactId>elitebosses</artifactId>
-            <version>1.5.4</version>
+            <version>1.5.5</version>
         </dependency>
     </dependencies>
 </project>

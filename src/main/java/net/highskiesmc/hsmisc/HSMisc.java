@@ -5,10 +5,7 @@ import net.highskiesmc.hscore.highskies.HSPlugin;
 import net.highskiesmc.hsmisc.commands.commands.EncodeCommand;
 import net.highskiesmc.hsmisc.commands.commands.HSMiscCommand;
 import net.highskiesmc.hsmisc.commands.tabcompleters.HSMiscTabCompleter;
-import net.highskiesmc.hsmisc.events.handlers.BossClearDropsHandler;
-import net.highskiesmc.hsmisc.events.handlers.CreeperHealthHandler;
-import net.highskiesmc.hsmisc.events.handlers.EntityDamageHandler;
-import net.highskiesmc.hsmisc.events.handlers.ExplosionHandler;
+import net.highskiesmc.hsmisc.events.handlers.*;
 import org.bukkit.Bukkit;
 
 public final class HSMisc extends HSPlugin {
@@ -29,7 +26,7 @@ public final class HSMisc extends HSPlugin {
 
         register(new EntityDamageHandler(this));
         register(new ExplosionHandler(this));
-        //register(new TogglePvpHandler(this));
+        register(new TogglePvpHandler(this));
 
         if (usingRoseStacker) {
             this.creeperHealthHandler = new CreeperHealthHandler(this);
